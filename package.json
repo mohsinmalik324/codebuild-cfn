@@ -1,0 +1,20 @@
+{
+  "name": "codebuild-cfn",
+  "version": "1.0.0",
+  "description": "example express app for playing with codebuild",
+  "main": "lib/index.js",
+  "repository": "git@github.com:mohsinmalik324/codebuild-cfn.git",
+  "author": "Mohsin Malik <mohsinmalik324@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,31 @@
+Resources:
+  OutputBucket:
+    Type: AWS::S3::Bucket
+
+  ServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: 
+                - codebuild.amazonaws.com
+            Action:
+              - sts:AssumeRole
+
+  CodeBuild:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Artifacts:
+        Type: S3
+        Location: !Ref OutputBucket
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:5.0
+        Type: LINUX_CONTAINER
+      ServiceRole: !GetAtt ServiceRole.Arn
+      Source:
+        Type: GITHUB
+        Location: https://github.com/mohsinmalik324/codebuild-cfn.git
