@@ -14,6 +14,13 @@ Resources:
                 - codebuild.amazonaws.com
             Action:
               - sts:AssumeRole
+      # Policies:
+      #   - Version: "2012-10-17"
+      #     Statement:
+      #       - Effect: Allow
+      #         Action:
+      #           - logs:CreateLogStream
+      #         Resource: arn:aws:logs:us-west-2:976240736624:log-group:/aws/codebuild/CodeBuild-AaRA02t8KCNu:log-stream:dc15f749-9aa1-468e-a91d-e6f3261cfe64
 
   CodeBuild:
     Type: AWS::CodeBuild::Project
@@ -29,3 +36,6 @@ Resources:
       Source:
         Type: GITHUB
         Location: https://github.com/mohsinmalik324/codebuild-cfn.git
+      LogsConfig:
+        CloudWatchLogs:
+          Status: DISABLED
